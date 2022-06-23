@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost:27018/banco'),
+  imports: [MongooseModule.forRoot('mongodb://root:root@db:27017/banco?authSource=admin'),
   UsersModule,
 ],
   controllers: [],
