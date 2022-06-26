@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
-import { arrayUnique, IsEmail, IsNotEmpty, } from 'class-validator';
+import { IsEmail, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
@@ -23,8 +23,8 @@ export class User {
   
   @Prop()
   @ApiProperty()
-  @IsNotEmpty({
-    message: 'Digite uma senha'
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'Senha muito fraca',
   })
   password: string;
 }
