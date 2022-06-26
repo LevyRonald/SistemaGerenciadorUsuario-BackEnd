@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, } from 'class-validator';
+import { arrayUnique, IsEmail, IsNotEmpty, } from 'class-validator';
 import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
