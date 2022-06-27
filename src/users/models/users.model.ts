@@ -3,10 +3,16 @@ import { ApiProperty, ApiTags } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
 
+export interface UserModel {
+  name: string;
+  email: string;
+  password?: string;
+}
+
 export type UserDocument = User & Document;
 @Schema()
 @ApiTags('users')
-export class User {
+export class User implements UserModel {
   @Prop()
   @ApiProperty()
   @IsNotEmpty({
