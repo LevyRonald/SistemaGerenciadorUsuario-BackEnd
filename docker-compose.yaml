@@ -13,7 +13,7 @@ services:
     networks:
       - api-sgf
     volumes:
-      - .:/home/node/app
+      - .:/usr/app-nest/app
   db:
     image: mongo
     ports: 
