@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
-import { User } from '../models/users.model';
+import { User, UserModel } from '../models/users.model';
 import { UsersService } from '../services/users.service';
 
 
@@ -9,7 +9,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
   @Post()
-  create(@Body() createUserDto: User) {
+  create(@Body() createUserDto: User): Promise<UserModel> {
     return this.usersService.create(createUserDto);
   }
 
