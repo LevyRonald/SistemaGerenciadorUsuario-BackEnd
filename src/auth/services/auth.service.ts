@@ -1,14 +1,14 @@
 import { UsersService } from './../../users/services/users.service';
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { User, UserModel } from 'src/users/models/users.model';
+import { User } from 'src/users/models/users.model';
 import { UserPayload } from '../models/UserPayload';
 import { JwtService } from '@nestjs/jwt';
 import { UserToken } from 'src/auth/models/UserToken'
 @Injectable()
 export class AuthService {
     constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
-    login(user: UserModel): UserToken {
+    login(user: User): UserToken {
         const payload: UserPayload = {
             sub: user.id,
             email: user.email,
