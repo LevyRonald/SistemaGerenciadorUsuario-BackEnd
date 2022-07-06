@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
+import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 import { User, UserModel } from '../models/users.model';
 import { UsersService } from '../services/users.service';
 
