@@ -8,7 +8,7 @@ import { UsersService } from '../services/users.service';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
-
+  @IsPublic()
   @Post()
   create(@Body() createUserDto: User): Promise<UserModel> {
     return this.usersService.create(createUserDto);

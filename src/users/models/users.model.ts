@@ -4,7 +4,6 @@ import { IsEmail, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
 
 export interface UserModel {
-  id?: number;
   name: string;
   email: string;
   password?: string;
@@ -34,7 +33,6 @@ export class User implements UserModel {
     message: 'Senha muito fraca',
   })
   password: string;
-    id: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -10,13 +10,10 @@ export class AuthService {
     constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
     login(user: User): UserToken {
         const payload: UserPayload = {
-            sub: user.id,
             email: user.email,
             name: user.name
         };
-
-        const jwtToken = this.jwtService.sign(payload);
-
+        const jwtToken = this.jwtService.sign(user);
         return {
             access_token: jwtToken,
         }
@@ -28,8 +25,8 @@ export class AuthService {
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if(isPasswordValid){
                 return{
-                    ...user,
-                    password: undefined,
+                    email: user.email, 
+                    name: user.name,
                 };
             }
         }
