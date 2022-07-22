@@ -9,18 +9,18 @@ import { UsersService } from '../services/users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
   @IsPublic()
-  @Post()
+  @Post('adicionar')
   create(@Body() createUserDto: User): Promise<UserModel> {
     return this.usersService.create(createUserDto);
   }
 
-  @Get()
+  @Get('listar')
   findAll() {
     return this.usersService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get('listarUm')
+  findOne(@Body('id') id: string) {
     return this.usersService.findOne(id);
   }
 
