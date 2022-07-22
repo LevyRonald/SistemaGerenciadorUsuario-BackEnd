@@ -11,7 +11,8 @@ export class AuthService {
     login(user: User): UserToken {
         const payload: UserPayload = {
             email: user.email,
-            name: user.name
+            name: user.name,
+            roles: user.roles
         };
         const jwtToken = this.jwtService.sign(user);
         return {
@@ -28,6 +29,7 @@ export class AuthService {
                 return{
                     email: user.email, 
                     name: user.name,
+                    roles: user.roles
                 };
             }
         }
