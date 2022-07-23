@@ -1,13 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty, ApiTags } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, Matches, } from 'class-validator';
+import { IsEmail, isNotEmpty, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
+import { Role } from '../../auth/models/role.enum';
 
 export interface UserModel {
-  id?: number;
   name: string;
   email: string;
   password?: string;
+  roles: Role
 }
 
 export type UserDocument = User & Document;
@@ -34,7 +35,14 @@ export class User implements UserModel {
     message: 'Senha muito fraca',
   })
   password: string;
-    id: number;
+
+  @Prop()
+  @ApiProperty()
+  @IsNotEmpty({
+    message: 'Escolha um Cargo'
+  })
+  roles: Role;
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

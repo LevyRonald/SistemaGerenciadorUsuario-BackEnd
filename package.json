@@ -32,6 +32,7 @@
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
     "mongoose": "^6.4.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",

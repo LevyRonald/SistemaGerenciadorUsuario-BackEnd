@@ -10,15 +10,14 @@ export class AuthService {
     constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
     login(user: User): UserToken {
         const payload: UserPayload = {
-            sub: user.id,
             email: user.email,
-            name: user.name
+            name: user.name,
+            roles: user.roles
         };
-
-        const jwtToken = this.jwtService.sign(payload);
-
+        const jwtToken = this.jwtService.sign(user);
         return {
             access_token: jwtToken,
+            user: payload
         }
     }
     async validateUser(email: string, password: string) {
@@ -28,8 +27,9 @@ export class AuthService {
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if(isPasswordValid){
                 return{
-                    ...user,
-                    password: undefined,
+                    email: user.email, 
+                    name: user.name,
+                    roles: user.roles
                 };
             }
         }

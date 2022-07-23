@@ -6,13 +6,15 @@ import { UsersModule } from 'src/users/models/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LoginValidationMiddleware} from './middlewares/login-validation.middleware';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+
 @Module({
   imports: [UsersModule, JwtModule.register({
     secret: process.env.KEY_MASTER_JWT,
     signOptions: { expiresIn: '8h' }
   })],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy]
+  providers: [AuthService, LocalStrategy, JwtStrategy, RolesGuard]
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

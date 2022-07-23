@@ -15,7 +15,7 @@ export class UsersService {
     }
     const NewUser = await this.userModel.create(data);
 
-    return { email: NewUser.email, name: NewUser.name }
+    return { email: NewUser.email, name: NewUser.name, roles: NewUser.roles }
   }
 
   findAll() {
