@@ -1,3 +1,4 @@
+import { AppGateway } from './../../socket/socket-gateway';
 import { UsersService } from './../../users/services/users.service';
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
@@ -7,7 +8,11 @@ import { JwtService } from '@nestjs/jwt';
 import { UserToken } from 'src/auth/models/UserToken'
 @Injectable()
 export class AuthService {
-    constructor(private readonly usersService: UsersService, private readonly jwtService: JwtService) {}
+    constructor(
+        private readonly usersService: UsersService, 
+        private readonly jwtService: JwtService,
+        private readonly socketGateway: AppGateway
+        ) {}
     login(user: User): UserToken {
         const payload: UserPayload = {
             email: user.email,
@@ -15,6 +20,7 @@ export class AuthService {
             roles: user.roles
         };
         const jwtToken = this.jwtService.sign(user);
+        this.socketGateway.emitUserLogged(user)
         return {
             access_token: jwtToken,
             user: payload

@@ -5,6 +5,7 @@ import { Document } from 'mongoose';
 import { Role } from '../../auth/models/role.enum';
 
 export interface UserModel {
+  _id?: string;
   name: string;
   email: string;
   password?: string;

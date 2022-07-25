@@ -1,8 +1,8 @@
+import { Observable } from 'rxjs';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/users/models/users.model';
 import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Observable } from "rxjs";
 import { Role } from '../models/role.enum';
 import {ROLES} from '../decorators/roles.decorator'
 
