@@ -21,7 +21,7 @@ export class RolesGuard implements CanActivate{
             return true;
         }
         const token = req.headers.authorization;
-        const payload = this.JwtService.decode(token.split(' ')[1], { json: true }) as { role: Role }
-        return requireRoles.some((role) => payload.role?.includes(role))
+        const payload = this.JwtService.decode(token.split(' ')[1], { json: true }) as { roles: Role }
+        return requireRoles.some((role) => payload.roles?.includes(role))
     }
 }
