@@ -34,7 +34,7 @@ export class AppGateway implements OnGatewayInit{
     }
     emitnewUser(user: User) {
         this.server.emit('new-user', user);
-        console.log('Usuario adicionado')
+        console.log(`criado ${user}`)
     }
     emitUserLogged(_id: User) {
         this.server.emit('is-logged', { _id });

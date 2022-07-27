@@ -18,22 +18,21 @@ export class UsersService {
       password: await bcrypt.hash(user.password, 10),
     }
     const NewUser = await this.userModel.create(data);
-    this.socketGateway.emitnewUser(NewUser)
+    this.socketGateway.emitnewUser(user)
 
     return { email: NewUser.email, name: NewUser.name, roles: NewUser.roles }
   }
 
   findAll() {
-    console.log(this.userModel.find())
     return this.userModel.find();
   }
 
-  findOne(id: string) {
-    return this.userModel.findById(id)
+  async findOne(id: string): Promise<UserModel> {
+    return await this.userModel.findById(id, { password: 0 });
   }
 
-  findByEmail(email: string) {
-    return this.userModel.findOne({
+  async findByEmail(email: string): Promise<UserModel> {
+    return await this.userModel.findOne({
       email
     });
   }

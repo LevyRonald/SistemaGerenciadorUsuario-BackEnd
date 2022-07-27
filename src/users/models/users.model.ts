@@ -3,7 +3,6 @@ import { ApiProperty, ApiTags } from '@nestjs/swagger';
 import { IsEmail, isNotEmpty, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
 import { Role } from '../../auth/models/role.enum';
-
 export interface UserModel {
   _id?: string;
   name: string;
@@ -23,7 +22,7 @@ export class User implements UserModel {
   })
   name: string;
 
-  @Prop()
+  @Prop({ unique: true})
   @ApiProperty()
   @IsEmail({}, {
     message: 'Digite um endereço de email.'
