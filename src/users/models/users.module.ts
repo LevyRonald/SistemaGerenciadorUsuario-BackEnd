@@ -1,3 +1,4 @@
+import { AppGateway } from './../../socket/socket-gateway';
 import { Module } from '@nestjs/common';
 import { UsersService } from '../services/users.service';
 import { UsersController } from '../controllers/users.controller';
@@ -9,11 +10,11 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @Module({
   imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
   controllers: [UsersController],
-  providers: [UsersService,
+  providers: [UsersService, AppGateway,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     }],
-  exports: [UsersService,]
+  exports: [UsersService]
 })
 export class UsersModule {}
