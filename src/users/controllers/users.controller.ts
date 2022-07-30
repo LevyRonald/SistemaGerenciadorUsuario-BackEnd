@@ -4,7 +4,7 @@ import { User, UserModel } from '../models/users.model';
 import { UsersService } from '../services/users.service';
 import { Role } from '../../auth/models/role.enum';
 import { Roles } from '../../auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
