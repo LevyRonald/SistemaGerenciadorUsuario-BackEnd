@@ -20,7 +20,7 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN, Role.USER)
   @UseGuards(RolesGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
