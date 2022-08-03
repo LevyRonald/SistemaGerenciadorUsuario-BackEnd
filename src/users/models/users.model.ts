@@ -4,6 +4,7 @@ import { IsEmail, isNotEmpty, IsNotEmpty, Matches, } from 'class-validator';
 import { Document } from 'mongoose';
 import { Role } from '../../auth/models/role.enum';
 export interface UserModel {
+  _id?: string;
   name: string;
   email: string;
   password?: string;
@@ -41,6 +42,7 @@ export class User implements UserModel {
     message: 'Escolha um Cargo'
   })
   roles: Role;
+  _id?: string;
 
   constructor(user?: Partial<User>){
     this.name = user?.name
