@@ -15,6 +15,7 @@ export class AuthService {
         ) {}
     login(user: User): UserToken {
         const payload: UserPayload = {
+            _id: user._id,
             email: user.email,
             name: user.name,
             roles: user.roles
@@ -33,6 +34,7 @@ export class AuthService {
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if(isPasswordValid){
                 return{
+                    _id: user._id,
                     email: user.email, 
                     name: user.name,
                     roles: user.roles

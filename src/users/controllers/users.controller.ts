@@ -14,13 +14,13 @@ export class UsersController {
   create(@Body() createUserDto: User): Promise<UserModel> {
     return this.usersService.create(createUserDto);
   }
-  @Roles(Role.ADMIN, Role.USER)
+  @Roles(Role.ADMIN, Role.USUARIO, Role.VENDEDOR, Role.SUPORTE)
   @UseGuards(RolesGuard)
   @Get('listar')
   findAll() {
     return this.usersService.findAll();
   }
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN, Role.USUARIO, Role.VENDEDOR, Role.SUPORTE)
   @UseGuards(RolesGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
