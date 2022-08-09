@@ -6,7 +6,7 @@ import { Role } from '../../auth/models/role.enum';
 
 const userList: User[] = [
     new User({ name: 'Levy', email: 'admin@admin.com', password: 'Levy123', roles: Role.ADMIN }),
-    new User({ name: 'usuario 1', email: 'user@user.com', password: 'Levy123', roles: Role.USER }),
+    new User({ name: 'usuario 1', email: 'user@user.com', password: 'Levy123', roles: Role.USUARIO }),
     new User({ name: 'usuario 2', email: 'resu@resu.com', password: 'Levy123', roles: Role.ADMIN })
 ];
 const user = new User({ name: 'Levy Ronald', email: 'admin2@admin.com', password: 'Levy123', roles: Role.ADMIN })

@@ -5,7 +5,7 @@ import { UsersService } from './users.service';
 
 const UserList: User[] = [
   new User({ name: 'Levy', email: 'admin@admin.com', password: 'Levy213', roles: Role.ADMIN }),
-  new User({ name: 'User', email: 'user@user.com', password: 'Levy123', roles: Role.USER }),
+  new User({ name: 'User', email: 'user@user.com', password: 'Levy123', roles: Role.USUARIO }),
   new User({ name: 'Lucas', email: 'lucas@gmail.com', password: 'Levy123', roles: Role.ADMIN })
 ]
 const user = new User({
